@@ -10,7 +10,6 @@ env:
 jobs:
   publish:
     name: Publish the package to pub.dev
-    if: github.event.base_ref == 'refs/heads/master' && startsWith(github.event.ref, 'refs/tags/v')
     permissions:
       id-token: write
     runs-on: ubuntu-latest
