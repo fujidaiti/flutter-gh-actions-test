@@ -1,6 +1,6 @@
 name: flutter_gh_actions_test
 description: This is a test of GitHub Actions for Flutter project
-version: 8.0.0-rc.1
+version: 9.0.0-rc.1
 homepage: https://github.com/fujidaiti/flutter-gh-actions-test.git
 
 environment:
