@@ -8,6 +8,7 @@ on:
 jobs:
   test:
     name: This is a test
+    if: github.event.base_ref == 'refs/heads/master' && startsWith(github.event.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
       - run: echo "ref=${{ github.ref }}"
