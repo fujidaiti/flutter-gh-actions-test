@@ -14,8 +14,6 @@ jobs:
     permissions:
       id-token: write
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -27,14 +25,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-
-      - name: Package version
-        id: version
-        working-directory: ${{ env.package_dir }}
-        run: >
-          VERSION=$(cat ${{ env.package_dir }}/pubspec.yaml
-          | grep version | sed 's/version:\s*//') &&
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Flutter versioin
         run: flutter --version
