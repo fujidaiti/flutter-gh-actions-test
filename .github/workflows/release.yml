@@ -1,5 +1,5 @@
 name: Release new version
-run-name: Publising v${{ github.ref_name }} by ${{ github.event.head_commit.author }}
+run-name: ${{ github.event.head_commit.author.name }} is publishing v${{ github.ref_name }}
 on:
   push:
     tags:
