@@ -1,6 +1,6 @@
 # ChangeLog
 
-## 1.0.0 2023-06-16
+## 1.0.0
 
 - Awesome updates
 
