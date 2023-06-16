@@ -1,0 +1,16 @@
+name: Test
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+jobs:
+  test:
+    name: This is a test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ref=${{ github.ref }}"
+      - run: echo "rer_name=${{ github.ref_name }}"
+      - run: echo "sender.name=${{ github.event.sender.name }}"
+      - run: echo "${{ github.event.base_ref }}"
