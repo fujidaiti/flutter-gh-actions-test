@@ -1,5 +1,5 @@
 name: Release new version
-run-name: Publising version ${{ github.ref_name }} ${{ github.event.ref }}
+run-name: Publising v${{ github.ref_name }} by ${{ github.event.head_commit.author }}
 on:
   push:
     tags:
@@ -10,6 +10,7 @@ env:
 jobs:
   publish:
     name: Publish the package to pub.dev
+    if: github.event.base_ref == 'refs/heads/master' && startsWith(github.event.ref, 'refs/tags/v')
     permissions:
       id-token: write
     runs-on: ubuntu-latest
