@@ -17,24 +17,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
-      - name: Get latest release tag
-        id: previous_tag
-        uses: WyriHaximus/github-action-get-previous-tag@v1
-        with:
-          prefix: v
-          fallback: not-yet-released
-
-      - name: Tag name
-        id: tag-name
-        working-directory: ${{ env.package_dir }}
-        run: >
-          PKG_VERSION=$(cat pubspec.yaml | grep version | sed 's/version:\s*//') &&
-          echo tag=v$PKG_VERSION >> "$GITHUB_OUTPUT"
 
       - name: Create release tag
-        uses: softprops/action-gh-release@v1
-        if: success() && steps.previoustag.outputs.tag != ${{ steps.tag-name.outputs.tag }}
-        with:
-          tag_name: ${{ steps.tag-name.outputs.tag }}
-          body: ${{ github.event.pull_request.body }}
+        working-directory: ${{ env.package_dir }}
+        run: >
+          TAG=$(cat pubspec.yaml | grep version | sed 's/version:\s*//' | xargs echo) &&
+          git fetch origin master &&
+          git checkout master &&
+          git tag $(echo "v$TAG") &&
+          git push origin $(echo "v$TAG")
