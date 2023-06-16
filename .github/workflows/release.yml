@@ -1,9 +1,9 @@
 name: Release new version
 run-name: ${{ github.ref_name }} published by ${{ github.event.head_commit.author.name }}
 on:
-  workflow_run:
-    workflows: ['Create Release Tag']
-    types: ['completed']
+  push:
+    tags:
+    - 'v[0-9]+.[0-9]+.[0-9]+*' 
 env:
   package_dir: ./
   example_dir: ./example
