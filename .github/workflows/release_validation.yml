@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [master]
 env:
-  package_dir: ./package
+  package_dir: ./
   example_dir: ./example
 jobs:
   validation:
