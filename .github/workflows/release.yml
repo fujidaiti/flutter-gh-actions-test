@@ -85,16 +85,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.example_dir }}/build/web
-
-  release-tag:
-    name: Create release tag
-    needs: publish
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Create release tag
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ needs.publish.outputs.version }}
-          body: ${{ github.event.pull_request.body }}
