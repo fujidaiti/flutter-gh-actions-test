@@ -15,3 +15,5 @@ jobs:
       - run: echo "sender.name=${{ github.event.sender.name }}"
       - run: echo "${{ github.event.base_ref }}"
       - run: echo "${{ github.base_ref }}"
+      - run: echo $GITHUB_REF
+      - run: BRANCH_NAME=${GITHUB_REF#refs/heads/} && echo $BRANCH_NAME
